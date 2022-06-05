@@ -12,16 +12,19 @@ function wordle(word) {
 	answer = answer.split("");
 	answer_elements = element_count(answer);
 	guess = word.split("");
-	result = ["C", "C", "C", "C", "C"];
+	result = [];
+	for(i = 0; i < answer.length; i++) {
+		result[i] = "C";
+	}
 	// mark A first
-	for(i = 0; i < 5; i++) {
+	for(i = 0; i < answer.length; i++) {
 		if(guess[i] == answer[i]) {
 			result[i] = "A"
 			answer_elements[guess[i]]--;
 		}
 	}
 	// then mark B
-	for(i = 0; i < 5; i++) {
+	for(i = 0; i < answer.length; i++) {
 		if(letters[i] != answer[i]) {
 			if(answer.includes(guess[i]) && answer_elements[guess[i]] > 0) {
 				result[i] = "B"
